@@ -1,4 +1,4 @@
-#Manhwa Name Parser
+# Manhwa Name Parser
 
 All it does is simply remove the name in a string it doesn't have to be manhwa name genius!!
 It also copies the output to windows Clipboard, yep it only works for windows!!
