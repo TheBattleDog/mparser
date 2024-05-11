@@ -3,6 +3,58 @@
 #include <algorithm>
 #include "clipboardxx.hpp"
 
+bool onlySymbols(std::string str)
+{
+    for (const char& i : str)
+    {
+        if (isalnum(i))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+std::string process_string(std::string mName)
+{
+    std::string::iterator it = mName.begin();
+    bool capitalize = true;
+    while (it != mName.end())
+    {
+        if (!isalnum(*it))
+        {
+            mName.erase(it);
+            continue;
+        }
+        else 
+        {
+            break;
+        }
+        it++;
+    }
+    while (it != mName.end())
+    {
+        if (isalpha(*it) && capitalize)
+        {
+            *it = toupper(*it);
+            capitalize = false;
+        }
+        else if (*it == '-' || *it == '_')
+        {
+            *it = ' ';
+            capitalize = true;
+        }
+        else if (onlySymbols(std::string(it, mName.end())) && !isalnum(*it))
+        {
+            mName.erase(it);
+            continue;
+        }
+        it++;
+    }
+    mName[0] = toupper(mName[0]);
+    return mName;
+}
+
 int main(int argc, char* argv[])
 {
     std::string str = "(";
@@ -10,9 +62,7 @@ int main(int argc, char* argv[])
     
     if (argc == 2)
     {
-        argv[1][0] = toupper(argv[1][0]);
-        str += argv[1];
-        std::replace(str.begin(), str.end(), '-', ' ');
+        str += process_string(argv[1]);
         str += ")";
     }
     else
@@ -21,10 +71,8 @@ int main(int argc, char* argv[])
         
         std::cout << "Enter the text: ";
         std::getline(std::cin, userInput);
-        userInput[0] = toupper(userInput[0]);
-        
-        str += (userInput);
-        std::replace(str.begin(), str.end(), '-', ' ');
+
+        str += process_string(userInput);
         str += ")";
     }
 

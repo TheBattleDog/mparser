@@ -2,7 +2,7 @@
 
 All it does is simply remove the '-' characters in a string it doesn't have to be manhwa name genius!!
 
-It also copies the output to windows Clipboard, yep it only works for windows!!
+It also copies the output to windows Clipboard, yep it only works for windows(Maybe for Linux?)!!
 
 Add it as global variable and use it as a command in CMD or PowerShell!!
 
