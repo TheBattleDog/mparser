@@ -76,6 +76,6 @@ int main(int argc, char* argv[])
     }
 
     std::cout << str << " - [Copied to Clipboard]";
-    //clipb << str;
+    clipb << str;
     return 0;
 }
