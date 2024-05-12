@@ -39,15 +39,15 @@ std::string process_string(std::string mName)
             *it = toupper(*it);
             capitalize = false;
         }
-        else if (*it == '-' || *it == '_')
-        {
-            *it = ' ';
-            capitalize = true;
-        }
         else if (onlySymbols(std::string(it, mName.end())) && !isalnum(*it))
         {
             mName.erase(it);
             continue;
+        }
+        else if (*it == '-' || *it == '_')
+        {
+            *it = ' ';
+            capitalize = true;
         }
         it++;
     }
