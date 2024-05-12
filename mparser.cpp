@@ -41,8 +41,8 @@ std::string process_string(std::string mName)
         }
         else if (onlySymbols(std::string(it, mName.end())) && !isalnum(*it))
         {
-            mName.erase(it);
-            continue;
+            mName = std::string(mName.begin(), it);
+            break;
         }
         else if (*it == '-' || *it == '_')
         {
@@ -51,7 +51,6 @@ std::string process_string(std::string mName)
         }
         it++;
     }
-    mName[0] = toupper(mName[0]);
     return mName;
 }
 
@@ -77,6 +76,6 @@ int main(int argc, char* argv[])
     }
 
     std::cout << str << " - [Copied to Clipboard]";
-    clipb << str;
+    //clipb << str;
     return 0;
 }
